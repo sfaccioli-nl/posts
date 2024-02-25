@@ -16,11 +16,11 @@ const props = defineProps<Props>();
 const postsStore = usePosts();
 
 function moveUp() {
-  postsStore.movePostUp(props.post.id, props.index);
+  postsStore.movePost(props.post.id, props.index, props.index - 1);
 }
 
 function moveDown() {
-  postsStore.movePostDown(props.post.id, props.index);
+  postsStore.movePost(props.post.id, props.index, props.index + 1);
 }
 </script>
 <template>

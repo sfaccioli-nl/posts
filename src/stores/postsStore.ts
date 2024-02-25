@@ -12,26 +12,18 @@ export const usePosts = defineStore("posts", () => {
     posts.value = newPosts;
   }
 
-  function movePostUp(postId: number, index: number) {
-    if (index > 0) {
-      [posts.value[index - 1], posts.value[index]] = [
-        posts.value[index],
-        posts.value[index - 1],
-      ];
-
-      actionsStore.recordAction(postId, index, index - 1);
+  function movePost(
+    postId: number,
+    fromIndex: number,
+    toIndex: number,
+    recordAction = true
+  ) {
+    const post = posts.value.splice(fromIndex, 1)[0];
+    posts.value.splice(toIndex, 0, post);
+    if (recordAction) {
+      actionsStore.recordAction(postId, fromIndex, toIndex);
     }
   }
 
-  function movePostDown(postId: number, index: number) {
-    if (index < posts.value.length - 1) {
-      [posts.value[index + 1], posts.value[index]] = [
-        posts.value[index],
-        posts.value[index + 1],
-      ];
-      actionsStore.recordAction(postId, index, index + 1);
-    }
-  }
-
-  return { posts, setPosts, movePostUp, movePostDown };
+  return { posts, setPosts, movePost };
 });

@@ -1,12 +1,20 @@
 <script lang="ts" setup>
 import Button from "@/components/ui/Button.vue";
+import { useActions } from "@/stores/actionsStore";
 import { Action } from "@/types";
 
 type Props = {
   action: Action;
+  index: number;
 };
 
 const props = defineProps<Props>();
+
+const actionsStore = useActions();
+
+function timeTravel() {
+  actionsStore.timeTravel(props.index);
+}
 </script>
 
 <template>
@@ -18,6 +26,8 @@ const props = defineProps<Props>();
         `Moved post ${props.action.postId} from index ${props.action.from} to index ${props.action.to}`
       }}
     </p>
-    <Button size="md" variant="secondary">Time travel</Button>
+    <Button size="md" variant="secondary" @click="timeTravel"
+      >Time travel</Button
+    >
   </div>
 </template>

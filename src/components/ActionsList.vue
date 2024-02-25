@@ -35,6 +35,7 @@ const addBorderRadiusTop = computed(() => {
         v-for="(action, index) in actionsStore.actions"
         :key="action.postId"
         :action="action"
+        :index="index"
         :class="{
           'border-b border-gray-200': addBorderBottom(index),
           'rounded-b': addBorderRadiusBottom(index),
