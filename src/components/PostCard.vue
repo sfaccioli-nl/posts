@@ -25,13 +25,27 @@ function moveDown() {
 </script>
 <template>
   <div
-    class="bg-white py-6 px-4 rounded-lg shadow-lg mb-4 flex items-center justify-between"
+    class="bg-white py-2 px-4 rounded-lg shadow-lg mb-4 flex items-center justify-between h-[72px]"
   >
-    {{ `Post ${props.post.id}` }}
+    <p>{{ `Post ${props.post.id}` }}</p>
 
-    <div>
-      <ChevronUpIcon v-if="showUpIcon" class="h-5 w-5" @click="moveUp" />
-      <ChevronDownIcon v-if="showDownIcon" class="h-5 w-5" @click="moveDown" />
+    <div
+      class="flex flex-col justify-between h-full"
+      :class="{
+        'h-full': props.showUpIcon && props.showDownIcon,
+        'h-min': !props.showUpIcon || !props.showDownIcon,
+      }"
+    >
+      <ChevronUpIcon
+        v-if="props.showUpIcon"
+        class="h-5 w-5 hover:cursor-pointer"
+        @click="moveUp"
+      />
+      <ChevronDownIcon
+        v-if="props.showDownIcon"
+        class="h-5 w-5 hover:cursor-pointer"
+        @click="moveDown"
+      />
     </div>
   </div>
 </template>
