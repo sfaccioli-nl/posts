@@ -1,8 +1,8 @@
 import { describe, it, expect, vi, beforeEach } from "vitest";
 import { VueWrapper, mount } from "@vue/test-utils";
 import PostCard from "../components/PostCard.vue";
-import { createPinia, setActivePinia } from "pinia";
 import { usePosts } from "@/stores/postsStore";
+import { createTestingPinia } from "@pinia/testing";
 
 describe("PostCard", () => {
   let wrapper: VueWrapper;
@@ -14,13 +14,9 @@ describe("PostCard", () => {
   };
 
   beforeEach(() => {
-    const pinia = createPinia();
-    setActivePinia(pinia);
-    usePosts().movePost = vi.fn();
-
     wrapper = mount(PostCard, {
       global: {
-        plugins: [pinia],
+        plugins: [createTestingPinia({ createSpy: vi.fn })],
       },
       props: {
         post: mockPost,
@@ -54,6 +50,7 @@ describe("PostCard", () => {
   });
 
   it("calls movePost with correct parameters when icons are clicked", async () => {
+    usePosts().movePost = vi.fn();
     await wrapper.find(".chevron-up").trigger("click");
     expect(usePosts().movePost).toHaveBeenCalledWith(mockPost.id, 1, 0);
 
