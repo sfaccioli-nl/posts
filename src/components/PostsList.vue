@@ -9,7 +9,8 @@ const postsStore = usePosts();
 
 onMounted(() => {
   getPosts().then((result: Post[]) => {
-    postsStore.setPosts(result);
+    const firstFivePosts = result.slice(0, 5);
+    postsStore.setPosts(firstFivePosts);
   });
 });
 </script>
@@ -17,6 +18,6 @@ onMounted(() => {
 <template>
   <div>
     <h1 class="text-4xl text-white mb-8">Sortable Post List</h1>
-    <PostCard v-for="post in postsStore.posts" :key="post.id" :post="post" />
+    <PostCard v-for="post in postsStore.posts" :key="post.id" :post="post.id" />
   </div>
 </template>
