@@ -4,3 +4,9 @@ export type Post = {
   title: string;
   body: string;
 };
+
+export type Action = {
+  postId: number;
+  from: number;
+  to: number;
+};

@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { onMounted } from "vue";
+import { computed, onMounted } from "vue";
 import { usePosts } from "@/stores/postsStore";
 import { getPosts } from "@/api/postsAPI";
 import { Post } from "@/types";
@@ -13,11 +13,22 @@ onMounted(() => {
     postsStore.setPosts(firstFivePosts);
   });
 });
+
+const posts = computed(() => {
+  return postsStore.posts;
+});
 </script>
 
 <template>
   <div>
     <h1 class="text-4xl text-white mb-8">Sortable Post List</h1>
-    <PostCard v-for="post in postsStore.posts" :key="post.id" :post="post.id" />
+    <PostCard
+      v-for="(post, index) in posts"
+      :key="post.id"
+      :post="post"
+      :index="index"
+      :show-up-icon="index !== 0"
+      :show-down-icon="index !== posts.length - 1"
+    />
   </div>
 </template>
