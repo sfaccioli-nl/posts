@@ -38,12 +38,12 @@ function moveDown() {
     >
       <ChevronUpIcon
         v-if="props.showUpIcon"
-        class="h-5 w-5 hover:cursor-pointer"
+        class="chevron-up h-5 w-5 hover:cursor-pointer"
         @click="moveUp"
       />
       <ChevronDownIcon
         v-if="props.showDownIcon"
-        class="h-5 w-5 hover:cursor-pointer"
+        class="chevron-down h-5 w-5 hover:cursor-pointer"
         @click="moveDown"
       />
     </div>
