@@ -31,20 +31,28 @@ const addBorderRadiusTop = computed(() => {
       <p class="text-xl">List of actions commited</p>
     </div>
     <div v-if="actionsStore.actions.length > 0" class="m-5">
-      <ActionCard
-        v-for="(action, index) in actionsStore.actions"
-        :key="action.postId"
-        :action="action"
-        :index="index"
-        :class="{
-          'border-b border-gray-200': addBorderBottom(index),
-          'rounded-b': addBorderRadiusBottom(index),
-          'rounded-t': addBorderRadiusTop(index),
-        }"
-      />
+      <transition-group name="list" tag="div" class="list-container">
+        <ActionCard
+          v-for="(action, index) in actionsStore.actions"
+          :key="action.postId"
+          :action="action"
+          :index="index"
+          :class="{
+            'border-b border-gray-200': addBorderBottom(index),
+            'rounded-b': addBorderRadiusBottom(index),
+            'rounded-t': addBorderRadiusTop(index),
+          }"
+        />
+      </transition-group>
     </div>
     <div v-else class="m-5">
       <p class="text-center">No actions commited yet</p>
     </div>
   </div>
 </template>
+
+<style scoped>
+.list-move {
+  transition: transform 0.5s ease;
+}
+</style>
