@@ -19,7 +19,10 @@ function timeTravel() {
 
 <template>
   <div
-    :class="[$attrs.class, 'bg-white flex items-center justify-between p-4']"
+    :class="[
+      $attrs.class,
+      'action-card bg-white flex items-center justify-between p-4',
+    ]"
   >
     <p class="mr-4">
       {{
