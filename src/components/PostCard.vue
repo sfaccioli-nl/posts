@@ -25,7 +25,7 @@ function moveDown() {
 </script>
 <template>
   <div
-    class="bg-white py-2 px-4 rounded-lg shadow-lg mb-4 flex items-center justify-between h-[72px]"
+    class="post-card bg-white py-2 px-4 rounded-lg shadow-lg mb-4 flex items-center justify-between h-[72px]"
   >
     <p>{{ `Post ${props.post.id}` }}</p>
 
