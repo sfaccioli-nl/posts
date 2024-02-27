@@ -28,8 +28,8 @@ describe("PostsList", () => {
     const actionsStore = useActions();
 
     actionsStore.actions = [
-      { postId: 1, from: 0, to: 1 },
-      { postId: 3, from: 3, to: 4 },
+      { postId: 1, from: 0, to: 1, snapshot: [] },
+      { postId: 3, from: 3, to: 4, snapshot: [] },
     ];
 
     await wrapper.vm.$nextTick();

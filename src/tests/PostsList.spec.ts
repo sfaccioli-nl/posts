@@ -39,8 +39,10 @@ describe("PostsList", () => {
     await wrapper.vm.$nextTick();
 
     const postsStore = usePosts();
-    expect(postsStore.setPosts).toHaveBeenCalledTimes(1);
-    expect(postsStore.setPosts).toHaveBeenCalledWith(mockedPosts.slice(0, 5));
+    expect(postsStore.initializePosts).toHaveBeenCalledTimes(1);
+    expect(postsStore.initializePosts).toHaveBeenCalledWith(
+      mockedPosts.slice(0, 5)
+    );
     await wrapper.vm.$nextTick();
 
     const postCards = wrapper.findAllComponents(".post-card");
