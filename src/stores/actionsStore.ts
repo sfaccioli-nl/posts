@@ -15,7 +15,9 @@ export const useActions = defineStore("actions", () => {
 
   function timeTravel(actionIndex: number) {
     if (actions.value[actionIndex + 1]) {
-      postStore.posts = actions.value[actionIndex + 1].snapshot;
+      postStore.posts = JSON.parse(
+        JSON.stringify(actions.value[actionIndex + 1].snapshot)
+      );
     } else {
       postStore.resetPosts();
     }
