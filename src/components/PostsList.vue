@@ -20,8 +20,10 @@ const posts = computed(() => {
 </script>
 
 <template>
-  <div>
-    <h1 class="text-4xl text-white mb-8">Sortable Post List</h1>
+  <div
+    class="mb-8 w-full max-w-sm sm:max-w-md md:max-w-lg lg:max-w-xl flex-grow min-w-0"
+  >
+    <h1 class="text-4xl text-white mb-10">Sortable Post List</h1>
     <transition-group name="list" tag="div" class="list-container">
       <PostCard
         v-for="(post, index) in posts"

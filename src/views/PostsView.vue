@@ -7,7 +7,7 @@ import PostsList from "@/components/PostsList.vue";
   <div class="h-screen bg-[#f9f9ff] relative">
     <div class="relative bg-[#691edd]">
       <div
-        class="absolute bottom-0 bg-[#f9f9ff] z-2 w-full h-[80%] rounded-tl-[200px]"
+        class="absolute bottom-0 top-[145px] bg-[#f9f9ff] z-2 w-full h-full rounded-tl-[200px]"
       ></div>
 
       <div class="relative z-10 flex flex-wrap justify-around px-12 pt-20">

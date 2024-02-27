@@ -24,7 +24,7 @@ function timeTravel() {
       'action-card bg-white flex items-center justify-between p-4',
     ]"
   >
-    <p class="mr-4">
+    <p class="mr-4 text-sm">
       {{
         `Moved post ${props.action.postId} from index ${props.action.from} to index ${props.action.to}`
       }}

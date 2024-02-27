@@ -25,10 +25,10 @@ const addBorderRadiusTop = computed(() => {
 </script>
 <template>
   <div
-    class="flex flex-col bg-gray-200 rounded-lg h-fit shadow-lg min-w-[470px]"
+    class="flex flex-col bg-gray-200 rounded-lg h-fit shadow-lg w-full max-w-sm sm:max-w-md md:max-w-lg lg:max-w-xl flex-grow min-w-0"
   >
-    <div class="bg-white h-full w-full rounded-t-lg p-5">
-      <p class="text-xl">List of actions commited</p>
+    <div class="bg-white h-full rounded-t-lg p-5">
+      <p class="text-xl font-medium">List of actions commited</p>
     </div>
     <div v-if="actionsStore.actions.length > 0" class="m-5">
       <transition-group name="list" tag="div" class="list-container">
