@@ -9,4 +9,5 @@ export type Action = {
   postId: number;
   from: number;
   to: number;
+  snapshot: Post[];
 };

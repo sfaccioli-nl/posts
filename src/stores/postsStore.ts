@@ -5,11 +5,17 @@ import { useActions } from "./actionsStore";
 
 export const usePosts = defineStore("posts", () => {
   const posts = ref<Post[]>([]);
+  const initialPosts = ref<Post[]>([]);
 
   const actionsStore = useActions();
 
-  function setPosts(newPosts: Post[]) {
+  function initializePosts(newPosts: Post[]) {
     posts.value = newPosts;
+    initialPosts.value = JSON.parse(JSON.stringify(newPosts));
+  }
+
+  function resetPosts() {
+    posts.value = JSON.parse(JSON.stringify(initialPosts.value));
   }
 
   function movePost(
@@ -25,5 +31,5 @@ export const usePosts = defineStore("posts", () => {
     }
   }
 
-  return { posts, setPosts, movePost };
+  return { posts, initializePosts, resetPosts, movePost };
 });

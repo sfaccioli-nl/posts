@@ -10,7 +10,7 @@ const postsStore = usePosts();
 onMounted(() => {
   getPosts().then((result: Post[]) => {
     const firstFivePosts = result.slice(0, 5);
-    postsStore.setPosts(firstFivePosts);
+    postsStore.initializePosts(firstFivePosts);
   });
 });
 

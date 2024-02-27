@@ -9,13 +9,15 @@ export const useActions = defineStore("actions", () => {
   const postStore = usePosts();
 
   function recordAction(postId: number, from: number, to: number) {
-    actions.value = [{ postId, from, to }, ...actions.value];
+    const snapshot = JSON.parse(JSON.stringify(postStore.posts));
+    actions.value = [{ postId, from, to, snapshot }, ...actions.value];
   }
 
   function timeTravel(actionIndex: number) {
-    for (let i = 0; i <= actionIndex; i++) {
-      const action = actions.value[i];
-      postStore.movePost(action.postId, action.to, action.from, false);
+    if (actions.value[actionIndex + 1]) {
+      postStore.posts = actions.value[actionIndex + 1].snapshot;
+    } else {
+      postStore.resetPosts();
     }
     actions.value.splice(0, actionIndex + 1);
   }
