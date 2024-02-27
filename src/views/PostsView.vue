@@ -1,6 +1,19 @@
 <script setup lang="ts">
+import { getPosts } from "@/api/postsAPI";
 import ActionsList from "@/components/ActionsList.vue";
 import PostsList from "@/components/PostsList.vue";
+import { usePosts } from "@/stores/postsStore";
+import { Post } from "@/types";
+import { onMounted } from "vue";
+
+const postsStore = usePosts();
+
+onMounted(() => {
+  getPosts().then((result: Post[]) => {
+    const firstFivePosts = result.slice(0, 5);
+    postsStore.initializePosts(firstFivePosts);
+  });
+});
 </script>
 
 <template>

@@ -1,7 +1,7 @@
 import { describe, it, expect, vi, beforeEach } from "vitest";
 import { VueWrapper, mount } from "@vue/test-utils";
 import { createTestingPinia } from "@pinia/testing";
-import ActionCard from "../components/ActionCard.vue";
+import ActionCard from "@/components/ActionCard.vue";
 import Button from "@/components/ui/Button.vue";
 import { useActions } from "@/stores/actionsStore";
 
@@ -11,6 +11,7 @@ describe("YourComponent", () => {
     postId: 1,
     from: 0,
     to: 1,
+    snapshot: [],
   };
 
   beforeEach(() => {

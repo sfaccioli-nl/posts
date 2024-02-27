@@ -29,7 +29,11 @@ function timeTravel() {
         `Moved post ${props.action.postId} from index ${props.action.from} to index ${props.action.to}`
       }}
     </p>
-    <Button size="md" variant="secondary" @click="timeTravel"
+    <Button
+      class="time-travel-button"
+      size="md"
+      variant="secondary"
+      @click="timeTravel"
       >Time travel</Button
     >
   </div>

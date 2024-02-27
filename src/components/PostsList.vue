@@ -1,18 +1,9 @@
 <script lang="ts" setup>
-import { computed, onMounted } from "vue";
+import { computed } from "vue";
 import { usePosts } from "@/stores/postsStore";
-import { getPosts } from "@/api/postsAPI";
-import { Post } from "@/types";
 import PostCard from "./PostCard.vue";
 
 const postsStore = usePosts();
-
-onMounted(() => {
-  getPosts().then((result: Post[]) => {
-    const firstFivePosts = result.slice(0, 5);
-    postsStore.initializePosts(firstFivePosts);
-  });
-});
 
 const posts = computed(() => {
   return postsStore.posts;

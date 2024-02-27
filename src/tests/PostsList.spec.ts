@@ -34,15 +34,12 @@ describe("PostsList", () => {
     });
   });
 
-  it("fetches posts on mounted and displays the first five", async () => {
+  it("displays the first five posts in post cards", async () => {
     await wrapper.vm.$nextTick();
     await wrapper.vm.$nextTick();
 
     const postsStore = usePosts();
-    expect(postsStore.initializePosts).toHaveBeenCalledTimes(1);
-    expect(postsStore.initializePosts).toHaveBeenCalledWith(
-      mockedPosts.slice(0, 5)
-    );
+    postsStore.posts = mockedPosts.slice(0, 5);
     await wrapper.vm.$nextTick();
 
     const postCards = wrapper.findAllComponents(".post-card");
