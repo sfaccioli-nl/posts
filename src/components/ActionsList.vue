@@ -3,6 +3,10 @@ import ActionCard from "./ActionCard.vue";
 import { useActions } from "@/stores/actionsStore";
 
 const actionsStore = useActions();
+
+function handleTimeTravel(index: number) {
+  actionsStore.timeTravel(index);
+}
 </script>
 <template>
   <div
@@ -18,6 +22,7 @@ const actionsStore = useActions();
           :key="action.postId"
           :action="action"
           :index="index"
+          @timeTravel="handleTimeTravel"
         />
       </transition-group>
     </div>

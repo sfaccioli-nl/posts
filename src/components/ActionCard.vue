@@ -1,6 +1,5 @@
 <script lang="ts" setup>
 import Button from "@/components/ui/Button.vue";
-import { useActions } from "@/stores/actionsStore";
 import { Action } from "@/types";
 
 type Props = {
@@ -10,10 +9,10 @@ type Props = {
 
 const props = defineProps<Props>();
 
-const actionsStore = useActions();
+const emit = defineEmits(["timeTravel"]);
 
-function timeTravel() {
-  actionsStore.timeTravel(props.index);
+function emitTimeTravel() {
+  emit("timeTravel", props.index);
 }
 </script>
 
@@ -33,7 +32,7 @@ function timeTravel() {
       class="time-travel-button"
       size="md"
       variant="secondary"
-      @click="timeTravel"
+      @click="emitTimeTravel"
       >Time travel</Button
     >
   </div>

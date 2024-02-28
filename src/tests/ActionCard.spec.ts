@@ -38,6 +38,7 @@ describe("YourComponent", () => {
 
     await wrapper.findComponent(Button).trigger("click");
 
-    expect(actionsStore.timeTravel).toHaveBeenCalledWith(0);
+    expect(wrapper.emitted()).toHaveProperty("timeTravel");
+    expect(wrapper.emitted("timeTravel")?.[0]).toEqual([0]);
   });
 });
