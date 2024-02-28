@@ -1,27 +1,8 @@
 <script setup lang="ts">
-import { computed } from "vue";
 import ActionCard from "./ActionCard.vue";
 import { useActions } from "@/stores/actionsStore";
 
 const actionsStore = useActions();
-
-const addBorderBottom = computed(() => {
-  return (index: number) => {
-    return index !== actionsStore.actions.length - 1;
-  };
-});
-
-const addBorderRadiusBottom = computed(() => {
-  return (index: number) => {
-    return index === actionsStore.actions.length - 1;
-  };
-});
-
-const addBorderRadiusTop = computed(() => {
-  return (index: number) => {
-    return index === 0;
-  };
-});
 </script>
 <template>
   <div
@@ -37,11 +18,6 @@ const addBorderRadiusTop = computed(() => {
           :key="action.postId"
           :action="action"
           :index="index"
-          :class="{
-            'border-b border-gray-200': addBorderBottom(index),
-            'rounded-b': addBorderRadiusBottom(index),
-            'rounded-t': addBorderRadiusTop(index),
-          }"
         />
       </transition-group>
     </div>
