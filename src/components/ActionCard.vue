@@ -21,7 +21,7 @@ function timeTravel() {
   <div
     :class="[
       $attrs.class,
-      'action-card bg-white flex items-center justify-between p-4',
+      'action-card bg-white flex items-center justify-between p-4 last:rounded-b last:border-b-none first:rounded-t border-b border-gray-200 ',
     ]"
   >
     <p class="mr-4">

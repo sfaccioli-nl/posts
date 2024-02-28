@@ -24,7 +24,7 @@ describe("PostsList", () => {
     expect(wrapper.text()).toContain("No actions commited yet");
   });
 
-  it("applies correct classes with multiple actions", async () => {
+  it("renders the action cards", async () => {
     const actionsStore = useActions();
 
     actionsStore.actions = [
@@ -36,10 +36,5 @@ describe("PostsList", () => {
 
     const actionCards = wrapper.findAllComponents(".action-card");
     expect(actionCards.length).toBe(2);
-
-    expect(actionCards[0].classes()).toContain("rounded-t");
-    expect(actionCards[1].classes()).toContain("rounded-b");
-    expect(actionCards[0].classes()).toContain("border-b");
-    expect(actionCards[1].classes()).not.toContain("border-b");
   });
 });

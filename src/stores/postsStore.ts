@@ -18,17 +18,11 @@ export const usePosts = defineStore("posts", () => {
     posts.value = JSON.parse(JSON.stringify(initialPosts.value));
   }
 
-  function movePost(
-    postId: number,
-    fromIndex: number,
-    toIndex: number,
-    recordAction = true
-  ) {
+  function movePost(postId: number, fromIndex: number, toIndex: number) {
     const post = posts.value.splice(fromIndex, 1)[0];
     posts.value.splice(toIndex, 0, post);
-    if (recordAction) {
-      actionsStore.recordAction(postId, fromIndex, toIndex);
-    }
+
+    actionsStore.recordAction(postId, fromIndex, toIndex);
   }
 
   return { posts, initializePosts, resetPosts, movePost };
