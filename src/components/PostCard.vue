@@ -2,7 +2,6 @@
 import { defineProps } from "vue";
 import { ChevronUpIcon, ChevronDownIcon } from "@heroicons/vue/solid";
 import { Post } from "@/types";
-import { usePosts } from "@/stores/postsStore";
 
 type Props = {
   post: Post;
@@ -13,14 +12,14 @@ type Props = {
 
 const props = defineProps<Props>();
 
-const postsStore = usePosts();
+const emit = defineEmits(["movePost"]);
 
 function moveUp() {
-  postsStore.movePost(props.post.id, props.index, props.index - 1);
+  emit("movePost", props.post.id, props.index, props.index - 1);
 }
 
 function moveDown() {
-  postsStore.movePost(props.post.id, props.index, props.index + 1);
+  emit("movePost", props.post.id, props.index, props.index + 1);
 }
 </script>
 <template>

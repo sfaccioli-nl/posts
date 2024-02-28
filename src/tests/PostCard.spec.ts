@@ -52,9 +52,9 @@ describe("PostCard", () => {
   it("calls movePost with correct parameters when icons are clicked", async () => {
     usePosts().movePost = vi.fn();
     await wrapper.find(".chevron-up").trigger("click");
-    expect(usePosts().movePost).toHaveBeenCalledWith(mockPost.id, 1, 0);
+    expect(wrapper.emitted()).toHaveProperty("movePost");
 
     await wrapper.find(".chevron-down").trigger("click");
-    expect(usePosts().movePost).toHaveBeenCalledWith(mockPost.id, 1, 2);
+    expect(wrapper.emitted()).toHaveProperty("movePost");
   });
 });

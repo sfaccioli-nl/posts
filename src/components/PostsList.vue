@@ -14,6 +14,10 @@ const postsStore = usePosts();
 const posts = computed(() => {
   return postsStore.posts;
 });
+
+function movePost(postId: number, from: number, to: number) {
+  postsStore.movePost(postId, from, to);
+}
 </script>
 
 <template>
@@ -30,6 +34,7 @@ const posts = computed(() => {
           :index="index"
           :show-up-icon="index !== 0"
           :show-down-icon="index !== posts.length - 1"
+          @movePost="movePost"
         />
       </transition-group>
     </div>
