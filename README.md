@@ -43,7 +43,7 @@ To optimize performance, a snapshot approach was adopted. This method involves s
 ### Step by step guide
 
 ```
-git clone https://github.com/sfaccioli-trengo/posts.git
+git clone https://github.com/sfaccioli-nl/posts.git
 ```
 
 ```
